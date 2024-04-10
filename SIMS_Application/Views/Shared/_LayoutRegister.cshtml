@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign up Form</title>
+    <link rel="stylesheet" type="text/css" href="~/assets/assetsregister/css/Style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="icon" type="image/x-icon" href="images/1670568078_anh-avatar-tet-cute(8).jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    @RenderBody()
+    <img class="wave" src="~/assets/assetsregister/images/wave.png">
+    <div class="container">
+        <div class="img">
+            <img src="~/assets/assetsregister/images/bg.svg">
+        </div>
+        <div class="login-content">
+            <form asp-controller="Account" asp-action="Register" method="post">
+                <img src="~/assets/assetsregister/images/avatar.svg">
+                <h2 class="title">Welcome</h2>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Username</h5>
+                        <input type="text" name="Name" class="input">
+                    </div>
+                </div>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Email</h5>
+                        <input type="email" name="Email" class="input">
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Password</h5>
+                        <input type="password" name="Password" class="input">
+                    </div>
+                </div>
+                <a href="#">Login Now</a>
+                <input type="submit" class="btn" value="Register">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/assets/assetsregister/js/App.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@ namespace SIMS_Application.Controllers
 {
     public class StudentController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ProfileIndex()
         {
             return View();
         }

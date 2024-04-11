@@ -14,4 +14,17 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\assets\assetshome\css\.DS_Store" />
+    <None Include="wwwroot\assets\assetshome\fonts\.DS_Store" />
+    <None Include="wwwroot\assets\assetshome\img\.DS_Store" />
+    <None Include="wwwroot\assets\assetshome\img\banner\.DS_Store" />
+    <None Include="wwwroot\assets\assetshome\img\courses\.DS_Store" />
+    <None Include="wwwroot\assets\assetshome\img\event\.DS_Store" />
+    <None Include="wwwroot\assets\assetshome\img\features\.DS_Store" />
+    <None Include="wwwroot\assets\assetshome\img\testimonials\.DS_Store" />
+    <None Include="wwwroot\assets\assetshome\img\trainer\.DS_Store" />
+    <None Include="wwwroot\assets\assetshome\vendors\.DS_Store" />
+  </ItemGroup>
+
 </Project>

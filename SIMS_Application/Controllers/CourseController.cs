@@ -4,7 +4,11 @@ namespace SIMS_Application.Controllers
 {
     public class CourseController : Controller
     {
-        public IActionResult Index()
+        public IActionResult CourseIndex()
+        {
+            return View();
+        }
+        public IActionResult CourseDetail()
         {
             return View();
         }

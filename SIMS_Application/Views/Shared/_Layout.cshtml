@@ -1,49 +1,253 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@{
+    var session = Context.Session;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SIMS_Application</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SIMS_Application.styles.css" asp-append-version="true" />
+    <link rel="icon" href="~/assets/assetshome/img/favicon.png" type="image/png" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/assetshome/css/bootstrap.css"  />
+    <link rel="stylesheet" href="~/assets/assetshome/css/flaticon.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/assets/assetshome/css/themify-icons.css" />
+    <link rel="stylesheet" href="~/assets/assetshome/vendors/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/assets/assetshome/vendors/nice-select/css/nice-select.css" />
+    <!-- main css -->
+    <link rel="stylesheet" href="~/assets/assetshome/css/style.css" asp-append-version="true" />
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SIMS_Application</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+    
+    <!--================ Start Header Menu Area =================-->
+    <header class="header_area">
+      <div class="main_menu">
+        <div class="search_input" id="search_input_box">
+          <div class="container">
+            <form class="d-flex justify-content-between" method="" action="">
+              <input
+                type="text"
+                class="form-control"
+                id="search_input"
+                placeholder="Search Here"
+              />
+              <button type="submit" class="btn"></button>
+              <span
+                class="ti-close"
+                id="close_search"
+                title="Close Search"
+              ></span>
+            </form>
+          </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a class="navbar-brand logo_h" href="/Home/Index">
+                        <img src="~/assets/assetshome/img/logo.png" alt="" /></a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div
+              class="collapse navbar-collapse offset"
+              id="navbarSupportedContent"
+            >
+              <ul class="nav navbar-nav menu_nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/Home/Index">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about-us.html">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/Course/CourseIndex">Course</a>
+                </li>
+                <li class="nav-item submenu dropdown">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Blog</a
+                  >
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="single-blog.html"
+                        >Blog Details</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item submenu dropdown">
+                  <a href="#"
+                     class="nav-link dropdown-toggle"
+                     data-toggle="dropdown"
+                     role="button"
+                     aria-haspopup="true"
+                     aria-expanded="false">Profile</a>
+                  <ul class="dropdown-menu">
+                     <li class="nav-item">
+                         <a class="nav-link" href="courses.html">Information</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="course-details.html">Management Course</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="elements.html">Setting</a>
+                     </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link search" id="search">
+                    <i class="ti-search"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                   <a href="#" class="nav-link user" id="user">
+                      <i class="ti-user"></i>
+                      <span class="student-name">@session.GetString("Name")</span>
+                   </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/Account/Login" class="nav-link logout" id="logout">
+                    <i class="ti-power-off"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!--================ End Header Menu Area =================-->
+    <!--================ Start Home Banner Area =================-->
+    
+    @RenderBody()
+    <!--================ End Home Banner Area =================-->
+
+    <!--================ Start footer Area  =================-->
+    <footer class="footer-area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-6 single-footer-widget">
+                    <h4>Top Products</h4>
+                    <ul>
+                        <li><a href="#">Managed Website</a></li>
+                        <li><a href="#">Manage Reputation</a></li>
+                        <li><a href="#">Power Tools</a></li>
+                        <li><a href="#">Marketing Service</a></li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+                <div class="col-lg-2 col-md-6 single-footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Brand Assets</a></li>
+                        <li><a href="#">Investor Relations</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 single-footer-widget">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Brand Assets</a></li>
+                        <li><a href="#">Investor Relations</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 single-footer-widget">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">Experts</a></li>
+                        <li><a href="#">Agencies</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 single-footer-widget">
+                    <h4>Newsletter</h4>
+                    <p>You can trust us. we only send promo offers,</p>
+                    <div class="form-wrap" id="mc_embed_signup">
+                        <form target="_blank"
+                              action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                              method="get"
+                              class="form-inline">
+                            <input class="form-control"
+                                   name="EMAIL"
+                                   placeholder="Your Email Address"
+                                   onfocus="this.placeholder = ''"
+                                   onblur="this.placeholder = 'Your Email Address'"
+                                   required=""
+                                   type="email" />
+                            <button class="click-btn btn btn-default">
+                                <span>subscribe</span>
+                            </button>
+                            <div style="position: absolute; left: -5000px;">
+                                <input name="b_36c4fd991d266f23781ded980_aefe40901a"
+                                       tabindex="-1"
+                                       value=""
+                                       type="text" />
+                            </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - SIMS_Application - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <div class="info"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-bottom d-flex justify-content-between">
+                <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+                <div class="col-lg-4 col-sm-12 footer-social">
+                    <a href="#"><i class="ti-facebook"></i></a>
+                    <a href="#"><i class="ti-twitter"></i></a>
+                    <a href="#"><i class="ti-dribbble"></i></a>
+                    <a href="#"><i class="ti-linkedin"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!--================ End footer Area  =================-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/assets/assetshome/js/jquery-3.2.1.min.js"></script>
+    <script src="~/assets/assetshome/js/popper.js"></script>
+    <script src="~/assets/assetshome/js/bootstrap.min.js"></script>
+    <script src="~/assets/assetshome/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="~/assets/assetshome/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/assets/assetshome/js/owl-carousel-thumb.min.js"></script>
+    <script src="~/assets/assetshome/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/assets/assetshome/js/mail-script.js"></script>
+    <!--gmaps Js-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="~/assets/assetshome/js/gmaps.min.js"></script>
+    <script src="~/assets/assetshome/js/theme.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

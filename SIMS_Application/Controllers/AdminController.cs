@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SIMS_Application.Models;
 using System.Data.SqlClient;
+using System.Security.Principal;
 
 namespace SIMS_Application.Controllers
 {
@@ -58,6 +60,10 @@ namespace SIMS_Application.Controllers
 
             return View();
         }
-
+        public IActionResult ListCourse()
+        {
+            return View();
+        }
+        
     }
 }

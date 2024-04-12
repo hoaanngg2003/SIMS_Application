@@ -7,7 +7,7 @@
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string DescriptionCourse { get; set; }
-        public byte[] CourseImage { get; set; }
+        public string Schedule {  get; set; }
         public CourseModel() 
         { 
 

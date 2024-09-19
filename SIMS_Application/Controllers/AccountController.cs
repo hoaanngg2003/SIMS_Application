@@ -88,7 +88,7 @@ namespace SIMS_Application.Controllers
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
+                    .connection.Open();
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
